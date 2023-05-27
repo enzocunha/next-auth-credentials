@@ -4,9 +4,6 @@ export default async function handler(req, res) {
 	const { method } = req;
 
 	switch (method) {
-		case "GET":
-			break;
-
 		case "POST":
             try {
                 const { username, password } = req.body;
@@ -18,7 +15,7 @@ export default async function handler(req, res) {
                 const user = await userController.createUser({ username, password });
                 res.status(201).json(user);
             } catch (error) {
-                res.status(500).json({ error: "Error creating the user " + error.message });
+                res.status(500).json({ error: "Error creating the user: " + error.message });
             }
 			break;
 
