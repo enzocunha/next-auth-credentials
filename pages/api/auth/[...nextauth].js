@@ -18,7 +18,8 @@ export const authOptions = {
 
 				const user = await userController.getUser({ username, password });
 
-                return user;
+				// Adding placeholder parameters since server getServerSession expects them
+                return { ...user, name: 'test', email: 'test@test.com', image: 'https://www.gravatar.com/avatar/1234567890abcdef1234567890abcdef?d=mp&size=200' };
 			},
 		}),
 	],
