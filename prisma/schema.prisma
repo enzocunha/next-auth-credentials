@@ -14,4 +14,7 @@ model Users {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   username      String @unique
   password_hash String
+  name          String
+  email         String
+  image         String
 }

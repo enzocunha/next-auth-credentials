@@ -2,13 +2,16 @@ import prisma from "@/lib/prisma";
 const { hash, compare } = require("bcryptjs");
 
 const userController = {
-	async createUser({ username, password }) {
+	async createUser({ username, password, name, email, image }) {
 		const hashedPassword = await hash(password, 8);
 
 		const user = await prisma.Users.create({
 			data: {
 				username: username,
 				password_hash: hashedPassword,
+				name: name,
+				email: email,
+				image: image,
 			},
 		});
 
@@ -32,7 +35,10 @@ const userController = {
 			return null;
 		}
 
-		return { username: user.username };
+		// Destructure the user object and return everything except the password_hash
+		const { password_hash, ...rest } = user;
+
+		return rest;
 	},
 };
 
