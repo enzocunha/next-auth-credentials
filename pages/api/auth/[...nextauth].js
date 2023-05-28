@@ -10,7 +10,6 @@ export const authOptions = {
 				username: {
 					label: "Username",
 					type: "text",
-					placeholder: "jsmith",
 				},
 				password: { label: "Password", type: "password" },
 			},
@@ -23,6 +22,10 @@ export const authOptions = {
 			},
 		}),
 	],
+	// Custom auth pages
+	pages: {
+		signIn: "/login",
+	},
 };
 
 export default NextAuth(authOptions);
