@@ -9,15 +9,6 @@ export async function getServerSideProps(context) {
 		authOptions
 	);
 
-	if (!session) {
-		return {
-			redirect: {
-				destination: "/",
-				permanent: false,
-			},
-		};
-	}
-
 	return {
 		props: {
 			session,
@@ -26,7 +17,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function ServerPage() {
-	const { data: session } = useSession({ required: true });
+	const { data: session } = useSession();
 
 	if (!session) {
 		return <p>Access Denied</p>;
@@ -34,7 +25,7 @@ export default function ServerPage() {
 
 	return (
 		<main>
-			<h1>Protected Page</h1>
+			<h1>Protected Page rendered in the Server</h1>
 			<p>You can view this page because you are signed in.</p>
 		</main>
 	);
