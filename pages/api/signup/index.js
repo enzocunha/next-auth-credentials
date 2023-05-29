@@ -6,10 +6,20 @@ export default async function handler(req, res) {
 	switch (method) {
 		case "POST":
             try {
-                const { username, password, name, email, image } = req.body;
+                const { username, password, email } = req.body;
 
-                if (!username || !password || !name || !email || !image) {
+                if (!username || !password || !email) {
                     return res.status(400).json({error: "All fields are required"});
+                }
+
+                let { name, image } = req.body;
+
+                if (!name) {
+                    name = username;
+                }
+
+                if (!image) {
+                    image = "https://www.gravatar.com/avatar/1234567890abcdef1234567890abcdef?d=mp&size=200";
                 }
 
                 const user = await userController.createUser({ username, password, name, email, image });

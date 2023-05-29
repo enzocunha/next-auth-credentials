@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export default function SignIn() {
 	const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ export default function SignIn() {
 			method="post"
 			onSubmit={handleSubmit}
 		>
-			<h2 className="text-center text-2xl mb-6">Login</h2>
+			<h2 className="text-center text-2xl mb-6">Sign In</h2>
 
 			<div className="w-10/12 mb-4">
 				<label
@@ -55,8 +56,17 @@ export default function SignIn() {
 					type="submit"
 					className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
 				>
-					Log In
+					Sign In
 				</button>
+
+				<Link
+				href='/auth/signup'
+					type="button"
+					className="ml-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+				>
+					Sign Up
+				</Link>	
+				
 			</div>
 		</form>
 	);
