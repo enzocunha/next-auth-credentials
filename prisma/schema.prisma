@@ -17,4 +17,5 @@ model Users {
   name          String
   email         String
   image         String
+  role          String
 }

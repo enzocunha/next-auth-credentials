@@ -22,6 +22,16 @@ export const authOptions = {
 			},
 		}),
 	],
+	// Next auth doesn't return the complete user object by default, only name, email and image fields
+	callbacks: {
+		async jwt({ token, user }) {
+		  return { ...token, ...user };
+		},
+		async session({ session, token }) {
+		  session.user = token;
+		  return session;
+		},
+	  },
 	// Custom auth pages
 	pages: {
 		signIn: "/auth/login",

@@ -12,6 +12,7 @@ const userController = {
 				name: name,
 				email: email,
 				image: image,
+				role: "user",
 			},
 		});
 
