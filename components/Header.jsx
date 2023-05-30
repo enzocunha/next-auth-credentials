@@ -9,6 +9,7 @@ export default function Header() {
 			<Link href='/protected/client' className="flex items-center justify-center h-12 text-center px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-lg">Client Page</Link>
 			<Link href='/protected/server' className="flex items-center justify-center h-12 text-center px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-lg">Server Page</Link>
 			<Link href='/protected/api' className="flex items-center justify-center h-12 text-center px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-lg">API Call</Link>
+			<Link href='/protected/middleware' className="flex items-center justify-center h-12 text-center px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-lg">Middleware</Link>
 		</header>
 	);
 }
