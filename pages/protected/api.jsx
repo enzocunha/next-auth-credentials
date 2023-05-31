@@ -1,9 +1,18 @@
 export async function getServerSideProps(context) {
     // Get the user's session token from the cookies
-    const sessionToken = context.req?.cookies['next-auth.session-token'];
+    const cookieName = context.req.cookies['__Secure-next-auth.session-token'] ?
+                          '__Secure-next-auth.session-token' :
+                            'next-auth.session-token';
 
-	const res = await fetch("http://localhost:3000/api/protected", {
-        headers: sessionToken ? { cookie: `next-auth.session-token=${sessionToken}` } : undefined,
+    const sessionToken = context.req.cookies[cookieName];
+
+    // Get API url in the server side
+    const protocol = context.req.headers.referer.split('://')[0];
+    const host = context.req.headers.host;
+    const apiURL = `${protocol}://${host}/api/protected`;
+
+	const res = await fetch(apiURL, {
+        headers: sessionToken ? { cookie: `${cookieName}=${sessionToken}` } : undefined,
         });
     const data = await res.json();
 
